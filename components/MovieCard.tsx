@@ -20,8 +20,9 @@ export default function MovieCard({
             <Poster
               width={60}
               height={90}
-              src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w780${movie.poster_path}`}
               alt="Movie poster"
+              sizes="(min-width: 1024px) 180px, 60px"
             />
           ) : (
             <PosterPlaceholder>No poster</PosterPlaceholder>
