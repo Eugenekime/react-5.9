@@ -28,8 +28,10 @@ export default function MovieList({
       </Row>
       <StyledPagination
         current={currentPage}
-        total={data.total_pages * 20}
+        total={data.total_results}
         onChange={(page) => router.push(`/?page=${page}`)}
+        showSizeChanger={false}
+        pageSize={20}
       />
     </Container>
   );

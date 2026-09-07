@@ -3,6 +3,7 @@ import { Rate, Tag } from 'antd';
 import Image from 'next/image';
 import styled from 'styled-components';
 import { format } from 'date-fns';
+import truncateText from '@/lib/truncateText';
 
 export default function MovieCard({
   movie,
@@ -46,7 +47,9 @@ export default function MovieCard({
               })}
             </InfoContainerGenre>
           </ContainerInfo>
-          <Overview>{movie.overview || 'No description available.'}</Overview>
+          <Overview>
+            {truncateText(movie.overview, 125) || 'No description available.'}
+          </Overview>
           <ContainerRate>
             <MobileRate count={5} value={movie.vote_average / 2} allowHalf />
             <DesktopRate count={10} value={movie.vote_average} allowHalf />
@@ -196,18 +199,9 @@ const Overview = styled.p`
 
   width: 100%;
   height: 92px;
-  overflow-y: auto;
   padding-right: 4px;
   grid-column: 1 / -1;
 
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 4px;
-  }
   @media (min-width: 1024px) {
     /* DESKTOP */
     grid-column: 2;
